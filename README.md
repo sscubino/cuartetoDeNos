@@ -12,7 +12,7 @@ Basicamente cuando quieran aportar algo al trabajo va a ser algo asi:
 
 Igualmente les recomiento [esta pagina](https://dzone.com/articles/top-20-git-commands-with-examples) que tiene muchos commandos de git con ejemplos por si tienen alguna duda.
 
-###INICIALIZACION
+### INICIALIZACION
 Antes de todo, para empezar tienen que descargar el repositorio en su compu.
 Para eso esta el comando `git clone` y luego la direccion URL del repositorio. Asique:
 * En la consola pongan `git config –global user.name “name”` y donde dice name pongan su nombre entre "".
