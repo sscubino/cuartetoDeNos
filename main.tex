@@ -11,7 +11,7 @@
 \subtitulo{Grupo 3}
 \fecha{22 de Mayo de 2020}
 \materia{Algoritmos y Estructuras de Datos 1}
-\integrante{González Narvarte, Francisco}{519/15}{francisco1395@live.com} % Me rompe la compilacion el _ del mail wtf
+\integrante{González Narvarte, Francisco}{519/15}{francisco13\_95@live.com}
 \integrante{Giménez, Iván Manuel}{374/18}{ivangimenez8727@gmail.com}
 \integrante{Demare, Matías Nicolás}{762/19}{matiasdemare@gmail.com}
 \integrante{Scubino, Santiago}{??}{??}
@@ -27,22 +27,15 @@
 {\Large Ejercicio 1\par}
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esSeñal}{\In s :\TLista{\ent}, \In prof:\ent, \In freq:\ent, \Out b :\bool}{}
-		\pre{a>0}
-		\post{|b|>0}
+		\pre{\True}
+		\post{b \Iff (freq=8 \lor freq=32) \y \newline
+					(prof=8 \lor prof=16 \lor prof=32) \y \newline
+					duracion(s, freq) > 1}
 	\end{proc}
 \end{addmargin}
 
-
-
-
-
-
-$\sum_{i=0}^{\infty}{i}$
-
-
-$\forall x \in \mathbb{N}: x+1\geq x$
-
-
+% Devuelve duracion en segundos
+\aux{duracion}{s :\TLista{\ent}, freq:\ent}{\float}{(\IfThenElse{freq=0}{0}{\frac{|s|}{1000*freq}})}
 
 
 \end{document}
