@@ -37,7 +37,7 @@
 				}
 	\end{proc}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	% Devuelve duracion en segundos
@@ -53,7 +53,8 @@
 
 
 
-\newpage
+%\newpage
+\vspace{1cm}
 
 {\Large Ejercicio 2\par}
 \vspace{0.5cm}
@@ -92,11 +93,40 @@
 	}
 \end{addmargin}
 
-
-
 \newpage
 {\Large Ejercicio 3\par}
 
+\newpage
+{\Large Ejercicio 6\par}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\begin{proc}{tonosDeVozElevados}{\In r : reunión, \In prof:\ent, \In freq:\ent, \Out hablantes :\TLista{hablante}}{}
+		\pre{\True}\\
+		\post{ \\
+			(|r| > 0 \implica |hablantes| > 0) \yLuego \\
+			(\forall i :\ent)( i \in hablantes \implicaLuego 0 \leq i < |r| \yLuego tieneElTonoMasAlto(i, r)) \\
+		}
+	\end{proc}
+
+\end{addmargin}
+
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{tieneElTonoMasAlto}{i :\ent, r : reunion}{ \\
+		(\exists j :\ent)(0 \leq j < |r| \yLuego r[j]_{1}=i \y (\\
+		(\forall k :\ent) (0 \leq k < |r| \implicaLuego tono(r[j]_{0}) \geq tono(r[k]_{0})))\\
+	}
+
+\end{addmargin}
+
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\aux{tono}{s: se\tilde{n}al}{\float}{\sum_{i=0}^{|s|-1}\frac{s[i]}{|s|} $}
+
+\end{addmargin}
 
 
 \end{document}
