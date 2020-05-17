@@ -102,7 +102,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{tonosDeVozElevados}{\In r : reunión, \In prof:\ent, \In freq:\ent, \Out hablantes :\TLista{hablante}}{}
-		\pre{\True}\\
+		\pre{\True}
 		\post{ \\
 			(|r| > 0 \implica |hablantes| > 0) \yLuego \\
 			(\forall i :\ent)( i \in hablantes \implicaLuego 0 \leq i < |r| \yLuego tieneElTonoMasAlto(i, r)) \\
@@ -124,7 +124,7 @@
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
-	\aux{tono}{s: se\tilde{n}al}{\float}{\sum_{i=0}^{|s|-1}\frac{s[i]}{|s|} $}
+	\aux{tono}{s: señal}{\float}{\sum_{i=0}^{|s|-1} \frac{s[i]}{|s|} }
 
 \end{addmargin}
 
