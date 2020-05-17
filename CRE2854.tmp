@@ -156,7 +156,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{esPar}{\In n:\ent}{\\
-		n mod 2 = 0 \\
+		 \mod n 2 = 0 \\
 	}
 \end{addmargin}
 \vspace{1cm}

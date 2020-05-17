@@ -99,67 +99,25 @@
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esReunionValida}{\In r :reunion, \In prof:\ent, \In freq:\ent, \Out result :\bool}{}
 		\pre{\True}
-		\post{result \Iff (muestrasDeIgualTama\tilde{n}o(r)  \y \\
-			           unaSe\tilde{n}alPorPersona(r)) \\
-								}
+		\post{result \Iff muestrasDeIgualTama\~{n}o(r)  \y \\
+			(unaSe\~{n}alPorPersona(r))
+ }
 	\end{proc}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{muestrasDeIgualTama\tilde{n}o}{\In r :reunion}{\\
-		(\forall i :\ent)(0 \leq i < |r|) \implicaLuego |(r[0])_0| = |(r[i])_0| \\
+	\auxpred{muestrasDeIgualTamaño}{r :\reunion}{\\
+		(\forall i :\ent)(0 \leq i < |r| \implicaLuego |(r[0])_0| = |(r[i])_0| \\
 	}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{unaSe\tilde{n}alPorPersona}{\In r :reunion}{\\
-	(\forall i,j :\ent)(0 \leq i,j < |r|) \implicaLuego (r[i])_1 \neq (r[j])_1 \\
+	\auxpred{unaSeñalPorPersona}{r :\reunion}{\\
+	(\forall i,j :\ent)(0 \leq i,j < |r| \implicaLuego (r[i])_1 \neq (r[j])_1 \\
 }
 \end{addmargin}
-
-\newpage
-{\Large Ejercicio 4\par}
-\vspace{0.5cm}
-
-\begin{addmargin}[4em]{0em}
-	\begin{proc}{acelerar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
-		\pre{r = r_0}
-		\post{result \Iff (tieneLaMitadDeLasMuestras(r,r_0)  \y \\
-			           posicionesImpares(r,r_0)) \\
-								}
-	\end{proc}
-\end{addmargin}
-\vspace{1cm}
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
-	}
-\end{addmargin}
-\vspace{1cm}
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{posicionesImpares}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
-	}
-\end{addmargin}
-\vspace{1cm}
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{aux}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
-		(\forall i,j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
-	}
-\end{addmargin}
-\vspace{1cm}
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{esPar}{\In n:\ent}{\\
-		n mod 2 = 0 \\
-	}
-\end{addmargin}
-\vspace{1cm}
 
 \end{document}
 
