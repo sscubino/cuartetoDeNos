@@ -174,8 +174,8 @@
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{tonosDeVozElevados}{\In r : reunión, \In prof:\ent, \In freq:\ent, \Out hablantes :\TLista{hablante}}{}
 		\pre{\\
-			(\forall i:\ent)(0\leq i < |r| \implicaLuego esSe\tilde{n}al(r[i]_{0}, prof, freq) \y \\
-			(\forall i:\ent)(\forall j:\ent)(0\leq i,j < |r| \implicaLuego 0\leq s[i]_{1},s[j]_{1}<|s| \y s[i]_{1}=s[j]_{1} \leftrightarrow i=j)\\
+			(\forall i:\ent)(0\leq i < |r| \implicaLuego esSe\tilde{n}al(r[i]_{0}, prof, freq) \y (\\
+			(\forall i:\ent)(\forall j:\ent)(0\leq i,j < |r| \implicaLuego 0\leq s[i]_{1},s[j]_{1}<|s| \y s[i]_{1}=s[j]_{1} \leftrightarrow i=j))\\
 			%verifica que los hablantes esten numerados de 0 a |s|-1, sin repetir
 			}
 		\post{ \\
