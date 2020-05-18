@@ -203,6 +203,35 @@
 
 \end{addmargin}
 
+\newpage
+{\Large Ejercicio 10\par}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\begin{proc}{reconstruir}{\In s: señal, \In frec: \ent, \In prof:\ent, \Out result: señal}{}
+		\pre{esSe\tilde{n}al(s, prof, frec)}
+		\post{ \\
+			|s|=|result| \yLuego (\\
+			(\forall i : \ent)(0\leq i<|s|)\implicaLuego\\
+			s[i] = result[i] \vee seReparo(i,s,result))\\
+		}
+	\end{proc}
+\end{addmargin}
+
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{seReparo}{\In i: \ent, \In s :se\tilde{n}al, \In result :se\tilde{n}al}{\\
+		(\exists a,b:\ent)(0 \leq a < i < b < |s| \yLuego esIntervaloDeCeros(a,b,s) \yLuego\\
+		result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
+	}
+\end{addmargin}
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+	\auxpred{esIntervaloDeCeros}{\In a: \ent, \In b :\ent, \In s: se\tilde{n}al}{\\
+		(\forall i : \ent)(a < i < b \implicaLuego s[i]=0)\\
+	}
+\end{addmargin}
 
 \end{document}
 
