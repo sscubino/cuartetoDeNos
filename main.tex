@@ -188,6 +188,7 @@
 
 \vspace{0.5cm}
 
+
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneElTonoMasAlto}{i :\ent, r : reunion}{ \\
 		(\exists j :\ent)(0 \leq j < |r| \yLuego r[j]_{1}=i \y (\\
@@ -204,6 +205,49 @@
 \end{addmargin}
 
 \newpage
+
+{\Large Ejercicio 7}
+\vspace{0.5cm}
+\begin{addmargin}[4cm]{0em}
+	\begin{proc}{ordenar}{\Inout r:reunion, \In prof:\ent, \In freq:\ent}{}
+		\pre{freq > 0 \yLuego respetaProfundidad2(r) \y duranLoMismo(r,freq)}
+		\post{estanOrdenados(r)}
+	\end{proc}
+\end{addmargin}
+
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+    \auxpred{estanOrdenados}{r:reunion}{\
+    (\forall i:\ent)(0<i<|r|)\implicaLuego promedio(r[i]{0})>promedio(r[i-1]{0})\
+    }
+\end{addmargin}
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+    \aux{promedio}{s:\TLista{\ent}}{\float}{\sum{i=0}^{|s|-1}\frac{s[i]}{|s|}}
+\end{addmargin}
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+	\auxpred{duranLoMismo}{r:reunion, freq:\ent}{\\
+		(\forall i:\ent)(0<i<|r|)\implicaLuego \frac{|r[i]{0}|}{freq1000}=\frac{|r[i-1]_{0}|}{freq1000}\\
+	}
+\end{addmargin}
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+    \auxpred{respetaProfundidad}{s:\TLista{\ent}, prof:\ent}{\\
+		(\forall i:\ent)(0<i<|s|)\implicaLuego -2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
+	}
+\end{addmargin}
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+    \auxpred {respetaProfundidad2}{r:reunion}{\\
+		(\forall i:\ent)(0<=i<|r|)\implicaLuego respetaProfundidad(r[i]_{0})\\
+	}
+\end{addmargin}
+
+
+\newpage
+
 {\Large Ejercicio 10\par}
 \vspace{1cm}
 
@@ -226,7 +270,9 @@
 		result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
 	}
 \end{addmargin}
+
 \vspace{0.5cm}
+
 \begin{addmargin}[4em]{0em}
 	\auxpred{esIntervaloDeCeros}{\In a: \ent, \In b :\ent, \In s: se\tilde{n}al}{\\
 		(\forall i : \ent)(a < i < b \implicaLuego s[i]=0)\\
@@ -234,4 +280,11 @@
 \end{addmargin}
 
 \end{document}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{ReunionValida}{\In r :reunion, \In prof:\ent, \In freq:\ent}{
+		(muestrasDeIgualTama\tilde{n}o(r)  \y \\
+		unaSe\tilde{n}alPorPersona(r)) \\
+		}
+\end{addmargin}
 
