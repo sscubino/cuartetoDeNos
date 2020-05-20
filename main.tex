@@ -115,7 +115,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{unaSe\tilde{n}alPorPersona}{\In r :reunion}{\\
-	(\forall i,j :\ent)(0 \leq i,j < |r|) \implicaLuego (r[i])_1 \neq (r[j])_1 \\
+	(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r| \y 0 \leq j < |r|) \implicaLuego (r[i])_1 \neq (r[j])_1 \\
 }
 \end{addmargin}
 
@@ -125,8 +125,8 @@
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{acelerar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
-		\pre{r = r_0}
-		\post{result \Iff (tieneLaMitadDeLasMuestras(r,r_0)  \y \\
+		\pre{r = r_0 \y esReunionValida(r)}
+		\post{result \Iff |r|=|r_0| \yLuego (tieneLaMitadDeLasMuestras(r,r_0)  \y \\
 			           posicionesImpares(r,r_0)) \\
 								}
 	\end{proc}
@@ -135,29 +135,74 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
+		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego 
+		\left \lfloor{\frac{|(r_0[j])_0|}{2}} \right \rfloor = |(r[i])_0| \\
 	}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{posicionesImpares}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
+		(\forall i :\ent)(0 \leq i < |r_0|) \implicaLuego tomaLasPosicionesImpares((r_0[i])_0,(r[i])_0) \\
 	}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{aux}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
-		(\forall i,j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
+	\auxpred{tomaLasPosicionesImpares}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
+		(\forall i :\ent)(1 \leq i \leq |m|) \implicaLuego l[2i-1] = m[i-1] \\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+
+\newpage
+{\Large Ejercicio 5\par}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\begin{proc}{relentizar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
+		\pre{r = r_0}
+		\post{result \Iff |r|=|r_0| \yLuego (tieneElDobleDeLasMuestras(r,r_0)  \y \\
+			           lasMuestrasExtrasSonElPromedioDeLosPuntosVecinos(r,r_0)) \y \\
+								 lasMuestrasNoExtrasSonLasOriginales(r,r_0)) \\
+								}
+	\end{proc}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{tieneElDobleDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
+		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = 2|(r[j])_0|-1 \\
 	}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{esPar}{\In n:\ent}{\\
-		n mod 2 = 0 \\
+	\auxpred{lasMuestrasExtrasSonElPromedioDeLosPuntosVecinos}{\In r_0 :reunion, \In r :reunion}{\\
+		(\forall i :\ent)(0 \leq i < |r_0|) \implicaLuego lasMuestrasImparesSonElPromedio((r_0[i])_0,(r[i])_0) \\
 	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{lasMuestrasImparesSonElPromedio}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
+		(\forall i :\ent)(0 \leq i < |l|-1) \implicaLuego \left \lfloor{\frac{l[i]+l[i+1]}{2}} \right \rfloor = m[2i+1] \\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{lasMuestrasNoExtrasSonLasOriginales}{\In r_0 :reunion, \In r :reunion}{\\
+		(\forall i :\ent)(0 \leq i < |r_0|) \implicaLuego lasMuestrasParesSonLasOriginales((r_0[i])_0,(r[i])_0) \\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{lasMuestrasParesSonLasOriginales}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
+		(\forall i :\ent)(0 \leq i < |l|) \implicaLuego l[i] = m[2i] \\
+}
 \end{addmargin}
 \vspace{1cm}
 
