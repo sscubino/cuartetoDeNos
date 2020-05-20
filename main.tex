@@ -24,8 +24,11 @@
 % End carátula
 
 
+
+
+
 {\Large Ejercicio 1\par}
-\vspace{0.5cm}
+\vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esSeñal}{\In s :\TLista{\ent}, \In prof:\ent, \In freq:\ent, \Out b :\bool}{}
@@ -49,19 +52,14 @@
 	% Devuelve duracion en segundos
 	\aux{duracion}{s :\TLista{\ent}, freq:\ent}{\float}{(\IfThenElse{freq=0}{0}{\frac{|s|}{1000*freq}})}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{respetaProfundidad}{s :\TLista{\ent}, prof :\ent}{\\
 		(\forall i :\ent)( 0 \leq i < |s|) \implicaLuego (-2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
 	}
 \end{addmargin}
-\vspace{1cm}
 
-\begin{addmargin}[4em]{0em}
-	\auxpred{entre}{\In a :\ent,\In i :\ent, \In b:\ent}{a \leq i \y i < b}
-\end{addmargin}
-\vspace{1cm}
 
 
 
@@ -72,7 +70,8 @@
 \newpage
 
 {\Large Ejercicio 2\par}
-\vspace{0.5cm}
+\vspace{1cm}
+
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{seEnojó?}{\In señal :\TLista{\ent}, \In umbral:\ent, \In prof:\ent, \In freq:\ent, \Out b :\bool}{}
@@ -86,7 +85,7 @@
 		}
 	\end{proc}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{incluida}{s :\TLista{\ent}, subseq :\TLista{\ent}}{\\
@@ -94,13 +93,13 @@
 		(\forall j :\ent)(0 \leq j < |subseq| \implicaLuego subseq[j]=s[j+i]) \\
 	}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	% Devuelve duracion en segundos (freq no es cero por la Pre)
 	\aux{duracion}{s :\TLista{\ent}, freq:\ent}{\float}{\frac{|s|}{1000*freq}}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{superaUmbral}{s :\TLista{\ent}, umbral :\ent}{\\
@@ -117,7 +116,7 @@
 
 \newpage
 {\Large Ejercicio 3\par}
-\vspace{0.5cm}
+\vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esReunionValida}{\In r :reunion, \In prof:\ent, \In freq:\ent, \Out result :\bool}{}
@@ -125,7 +124,7 @@
 		\post{result \Iff esReunion(r, prof, freq)}
 	\end{proc}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{esReunion}{\In r :reunion, \In prof:\ent, \In freq:\ent}{\\
@@ -134,21 +133,21 @@
 		unaSe\tilde{n}alPorPersona(r) \\
 		}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{todasSonSe\tilde{n}ales}{\In r :reunion}{
 		(\forall i:\ent)(0 \leq i < |r| \implicaLuego esSe\tilde{n}alValida(r[i]_{0})
 		}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{muestrasDeIgualTama\tilde{n}o}{\In r :reunion}{\\
 		(\forall i :\ent)(0 \leq i < |r|) \implicaLuego |(r[0])_0| = |(r[i])_0| \\
 	}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{unaSe\tilde{n}alPorPersona}{\In r :reunion}{\\
@@ -156,7 +155,7 @@
 		(r[i])_1 \neq (r[j])_1 \y entre(0,(r[i])_1 , |r|))\\
 	}
 \end{addmargin}
-\vspace{1cm}
+
 
 
 
@@ -168,44 +167,46 @@
 
 
 {\Large Ejercicio 4\par}
-\vspace{0.5cm}
+\vspace{1cm}
+
+
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{acelerar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r = r_0}
 		\post{result \Iff (tieneLaMitadDeLasMuestras(r,r_0)  \y \\
 			           posicionesImpares(r,r_0)) \\
-								}
+			}
 	\end{proc}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
 		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
 	}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{posicionesImpares}{\In r_0 :reunion, \In r :reunion}{\\
 		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
 	}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{aux}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
 		(\forall i,j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
 	}
 \end{addmargin}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{esPar}{\In n:\ent}{\\
 		n mod 2 = 0 \\
 	}
 \end{addmargin}
-\vspace{1cm}
+
 
 
 
@@ -215,34 +216,31 @@
 
 \newpage
 {\Large Ejercicio 6\par}
-\vspace{0.5cm}
+\vspace{1cm}
+
 
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{tonosDeVozElevados}{\In r : reunión, \In prof:\ent, \In freq:\ent, \Out hablantes :\TLista{hablante}}{}
 		\pre{\\
-			(\forall i:\ent)(0\leq i < |r| \implicaLuego esSe\tilde{n}al(r[i]_{0}, prof, freq) \y (\\
-			(\forall i:\ent)(\forall j:\ent)(0\leq i,j < |r| \implicaLuego 0\leq s[i]_{1},s[j]_{1}<|s| \y s[i]_{1}=s[j]_{1} \leftrightarrow i=j))\\
-			%verifica que los hablantes esten numerados de 0 a |s|-1, sin repetir
+			esReunion(r, prof, frec)\\
 			}
 		\post{ \\
 			(|r| > 0 \implica |hablantes| > 0) \yLuego \\
-			(\forall i :\ent)( i \in hablantes \implicaLuego 0 \leq i < |r| \yLuego tieneElTonoMasAlto(i, r)) \\
+			(\forall i :\ent)( i \in hablantes \iff (0 \leq i < |r| \yLuego tieneElTonoMasAlto(i, r)) \\
 		}
 	\end{proc}
 
 \end{addmargin}
-
 \vspace{0.5cm}
 
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneElTonoMasAlto}{i :\ent, r : reunion}{ \\
 		(\exists j :\ent)(0 \leq j < |r| \yLuego r[j]_{1}=i \y (\\
-		(\forall k :\ent) (0 \leq k < |r| \implicaLuego tono(r[j]_{0}) \geq tono(r[k]_{0})))\\
+		(\forall k :\ent) (0 \leq k < |r| \implicaLuego tono(r[j]_{0}) \geq tono(r[k]_{0}))))\\
 	}
 
 \end{addmargin}
-
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
@@ -260,43 +258,29 @@
 
 
 
-{\Large Ejercicio 7}
-\vspace{0.5cm}
-\begin{addmargin}[4cm]{0em}
-	\begin{proc}{ordenar}{\Inout r:reunion, \In prof:\ent, \In freq:\ent}{}
-		\pre{freq > 0 \yLuego respetaProfundidad2(r) \y duranLoMismo(r,freq)}
-		\post{estanOrdenados(r)}
-	\end{proc}
-\end{addmargin}
-
+{\Large Ejercicio 7\par}
 \vspace{1cm}
 
+
 \begin{addmargin}[4em]{0em}
-    \auxpred{estanOrdenados}{r:reunion}{\
-    (\forall i:\ent)(0<i<|r|)\implicaLuego promedio(r[i]{0})>promedio(r[i-1]{0})\
+	\begin{proc}{ordenar}{\Inout r:reunion, \In prof:\ent, \In freq:\ent}{}
+		\pre{r=r_{0} \y esReunion(r_{0})}
+		\post{estanOrdenados(r) \y sonLaMismaReunion(r_{0},r)}
+	\end{proc}
+\end{addmargin}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+    \auxpred{estanOrdenados}{r:reunion}{\\
+    (\forall i:\ent)(0\leq i<|r|-1)\implicaLuego tono(r[i]{0})>tono(r[i+1]{0})\\
     }
 \end{addmargin}
 \vspace{0.5cm}
+
 \begin{addmargin}[4em]{0em}
-    \aux{promedio}{s:\TLista{\ent}}{\float}{\sum{i=0}^{|s|-1}\frac{s[i]}{|s|}}
-\end{addmargin}
-\vspace{0.5cm}
-\begin{addmargin}[4em]{0em}
-	\auxpred{duranLoMismo}{r:reunion, freq:\ent}{\\
-		(\forall i:\ent)(0<i<|r|)\implicaLuego \frac{|r[i]{0}|}{freq1000}=\frac{|r[i-1]_{0}|}{freq1000}\\
-	}
-\end{addmargin}
-\vspace{0.5cm}
-\begin{addmargin}[4em]{0em}
-    \auxpred{respetaProfundidad}{s:\TLista{\ent}, prof:\ent}{\\
-		(\forall i:\ent)(0<i<|s|)\implicaLuego -2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
-	}
-\end{addmargin}
-\vspace{0.5cm}
-\begin{addmargin}[4em]{0em}
-    \auxpred {respetaProfundidad2}{r:reunion}{\\
-		(\forall i:\ent)(0<=i<|r|)\implicaLuego respetaProfundidad(r[i]_{0})\\
-	}
+    \auxpred{sonLaMismaReunion}{r_{0}:reunion, r: reunion}{\\
+	(\forall s: se\tilde{n}al)(s \in r_{0} \iff s \in r)\\
+    }
 \end{addmargin}
 
 
@@ -311,51 +295,43 @@
 {\Large Ejercicio 10\par}
 \vspace{1cm}
 
+
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{reconstruir}{\In s: señal, \In frec: \ent, \In prof:\ent, \Out result: señal}{}
-		\pre{esSe\tilde{n}al(s, prof, frec)}
+		\pre{esSe\tilde{n}al(s, prof, frec) \y tieneAlMenosDosValoresNoNulos(s)}
 		\post{ \\
 			|s|=|result| \yLuego (\\
-			(\forall i : \ent)(0\leq i<|s|)\implicaLuego\\
-			s[i] = result[i] \vee seReparo(i,s,result))\\
+			(\forall i : \ent)(0\leq i<|s|)\implicaLuego (\\
+			(s[i] = result[i] \y s[i]\neq 0) \vee seReparo(i,s,result)))\\
 		}
 	\end{proc}
 \end{addmargin}
-
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{seReparo}{\In i: \ent, \In s :se\tilde{n}al, \In result :se\tilde{n}al}{\\
-		(\exists a,b:\ent)(0 \leq a < i < b < |s| \yLuego esIntervaloDeCeros(a,b,s) \yLuego\\
+		(\exists a,b:\ent)(0 \leq a < b < |s| \yLuego sonLosMasCercanos(a,b,i,s) \yLuego\\
 		result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
 	}
 \end{addmargin}
-
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{esIntervaloDeCeros}{\In a: \ent, \In b :\ent, \In s: se\tilde{n}al}{\\
-		(\forall i : \ent)(a < i < b \implicaLuego s[i]=0)\\
+	\auxpred{sonLosMasCercanos}{\In a: \ent, \In b :\ent, \In i :\ent, \In s: se\tilde{n}al}{\\
+		(\forall k : \ent)((0 \leq k < |s| \yLuego (|k-i|<|a-i| \o |k-i|<|b-i|)) \implica s[k]=0)\\
+	}
+\end{addmargin}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{tieneAlMenosDosValoresNoNulos}{\In s: se\tilde{n}al}{\\
+		(\exists a : \ent)(\exists b : \ent)((0 \leq a < |s| \y 0 \leq b < |s| \y a\neq b) \yLuego\\
+		s[a]\neq 0 \y s[b]\neq 0)\\
 	}
 \end{addmargin}
 
 \end{document}
 
-
-
-
-
-
-
-
-
-
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{pertenece}{\In elem :T,\In l:\TLista{T}}{\\
-		(\exists i:\ent)(entre(0,i,|l|)\yLuego l[i]=elem)\\
-	}
-\end{addmargin}
 
 
 
