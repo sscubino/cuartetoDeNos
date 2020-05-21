@@ -182,21 +182,21 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
+		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{posicionesImpares}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i,j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
+		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{aux}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
-		(\forall i,j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
+		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
@@ -236,7 +236,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneElTonoMasAlto}{i :\ent, r : reunion}{ \\
-		(\exists j :\ent)(0 \leq j < |r| \yLuego r[j]_{1}=i \y (\\
+		(\exists j :\ent) (0 \leq j < |r| \yLuego r[j]_{1}=i \y (\\
 		(\forall k :\ent) (0 \leq k < |r| \implicaLuego tono(r[j]_{0}) \geq tono(r[k]_{0}))))\\
 	}
 
@@ -310,7 +310,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{seReparo}{\In i: \ent, \In s :se\tilde{n}al, \In result :se\tilde{n}al}{\\
-		(\exists a,b:\ent)(0 \leq a < b < |s| \yLuego sonLosMasCercanos(a,b,i,s) \yLuego\\
+		(\exists a:\ent)(\exists b:\ent)(0 \leq a < b < |s| \yLuego sonLosMasCercanos(a,b,i,s) \yLuego\\
 		result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
 	}
 \end{addmargin}
