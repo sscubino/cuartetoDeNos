@@ -250,14 +250,7 @@
 
 
 
-
-
-
-
 \newpage
-
-
-
 {\Large Ejercicio 7\par}
 \vspace{1cm}
 
@@ -284,6 +277,68 @@
 \end{addmargin}
 
 
+
+\newpage
+{\Large Ejercicio 8\par}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\begin{proc}{silencios}{\In s : señal, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out intervalos :\TLista{intervalo}}{}
+		\pre{\\
+			duracion(se\tilde(n)al, freq) > 0 \y\\
+			respetaProfundidad(se\tilde{n}al, prof) \y\\
+			-2^{prof-1} \leq umbral \leq 2^{prof-1}-1\\
+		}
+		\post{ \\
+			(\forall interv:intervalo)((interv \in intervalos) \Iff (duracionDeIntervalo(interv, freq) > 0.1 \yLuego\\
+			tieneLimitesValidos(interv, s) \yLuego\\
+			esIntervaloSilencioso(interv, se\tilde{n}, ubmral)))\y \\
+			noHayRepetidos(intervalos) \\
+		}
+	\end{proc}
+\end{addmargin}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	% Devuelve duracion en segundos
+	\aux{duracion}{s :\TLista{\ent}, freq:\ent}{\float}{(\IfThenElse{freq=0}{0}{\frac{|s|}{1000*freq}})}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{respetaProfundidad}{s :\TLista{\ent}, prof :\ent}{\\
+		(\forall i :\ent)(0 \leq i < |s| \implicaLuego -2^{prof-1} \leq s[i] \leq 2^{prof-1}-1) \\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	% Devuelve duracion en segundos
+	\aux{duracionDeIntervalo}{interv :intervalo, freq:\ent}{\float}{(\IfThenElse{freq=0}{0}{\frac{interv_1-interv_0}{1000*freq}})}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{tieneLimitesValidos}{interv :intervalo, s : se\tilde{n}al}{\\
+		0 \leq interv_0 \leq interv_1 < |s| \\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{esIntervaloSilencioso}{interv :intervalo,  s : se\tilde{n}al, umbral:\ent}{\\
+		(\forall i :\ent)(interv_1 \leq i \leq interv_2 \implicaLuego (|s[i]| \leq umbral)) \y \\
+		(interv_0=0 \oLuego |s[interv_0-1]| > umbral) \y (interv_1=|s|-1 \oLuego |s[interv_1+1]| > umbral)\\
+	}
+\end{addmargin}
+\vspace{1cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{noHayRepetidos}{interv :\TLista{intervalo}}{\\
+		(\forall i,j :\ent)((i\neq j \y 0\leq i,j <|interv|) \implicaLuego (interv[i]_0 \neq interv[j]_0 \lor interv[i]_1 \neq interv[j]_1)) \\
+	}
+\end{addmargin}
+\vspace{1cm}
 
 
 
@@ -329,6 +384,7 @@
 		s[a]\neq 0 \y s[b]\neq 0)\\
 	}
 \end{addmargin}
+
 
 \end{document}
 
