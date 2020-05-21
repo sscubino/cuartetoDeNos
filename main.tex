@@ -26,10 +26,9 @@
 
 
 
-
-{\Large Ejercicio 1\par}
+\addcontentsline{toc}{section}{Ejercicio 1}
+\section*{Ejercicio 1}
 \vspace{1cm}
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esSeñal}{\In s :\TLista{\ent}, \In prof:\ent, \In freq:\ent, \Out b :\bool}{}
 		\pre{\True}
@@ -59,20 +58,13 @@
 		(\forall i :\ent)( 0 \leq i < |s|) \implicaLuego (-2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
 	}
 \end{addmargin}
-
-
-
-
-
-
-
-
 \newpage
 
-{\Large Ejercicio 2\par}
+
+
+\addcontentsline{toc}{section}{Ejercicio 2}
+\section*{Ejercicio 2}
 \vspace{1cm}
-
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{seEnojó?}{\In señal :\TLista{\ent}, \In umbral:\ent, \In prof:\ent, \In freq:\ent, \Out b :\bool}{}
 		\pre{esSe\tilde{n}alValida(se\tilde{n}al,prof,freq) \y -2^{prof-1} \leq umbral \leq 2^{prof-1}-1)}
@@ -106,18 +98,13 @@
 		(\forall i :\ent)(0 \leq i < |s|) \implicaLuego s[i]>umbral) \\
 	}
 \end{addmargin}
-
-
-
-
-
-
-
-
 \newpage
-{\Large Ejercicio 3\par}
-\vspace{1cm}
 
+
+
+\addcontentsline{toc}{section}{Ejercicio 3}
+\section*{Ejercicio 3}
+\vspace{1cm}
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{esReunionValida}{\In r :reunion, \In prof:\ent, \In freq:\ent, \Out result :\bool}{}
 		\pre{\True}
@@ -155,18 +142,13 @@
 		(r[i])_1 \neq (r[j])_1 \y entre(0,(r[i])_1 , |r|))\\
 	}
 \end{addmargin}
-
-
-
-
-
 \newpage
 
 
-{\Large Ejercicio 4\par}
+
+\addcontentsline{toc}{section}{Ejercicio 4}
+\section*{Ejercicio 4}
 \vspace{1cm}
-
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{acelerar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r = r_0}
@@ -203,14 +185,13 @@
 		n mod 2 = 0 \\
 	}
 \end{addmargin}
-
-
-
-
 \newpage
-{\Large Ejercicio 5\par}
-\vspace{0.5cm}
 
+
+
+\addcontentsline{toc}{section}{Ejercicio 5}
+\section*{Ejercicio 5}
+\vspace{0.5cm}
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{relentizar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r = r_0}
@@ -256,15 +237,13 @@
 }
 \end{addmargin}
 \vspace{1cm}
-
-
-
-
 \newpage
-{\Large Ejercicio 6\par}
+
+
+
+\addcontentsline{toc}{section}{Ejercicio 6}
+\section*{Ejercicio 6}
 \vspace{1cm}
-
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{tonosDeVozElevados}{\In r : reunión, \In prof:\ent, \In freq:\ent, \Out hablantes :\TLista{hablante}}{}
 		\pre{\\
@@ -293,14 +272,14 @@
 	\aux{tono}{s: señal}{\float}{\sum_{i=0}^{|s|-1} \frac{s[i]}{|s|} }
 
 \end{addmargin}
-
-
-
 \newpage
-{\Large Ejercicio 7\par}
+
+
+
+
+\addcontentsline{toc}{section}{Ejercicio 7}
+\section*{Ejercicio 7}
 \vspace{1cm}
-
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{ordenar}{\Inout r:reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r=r_{0} \y esReunion(r_{0})}
@@ -321,13 +300,13 @@
 	(\forall s: se\tilde{n}al)(s \in r_{0} \iff s \in r)\\
     }
 \end{addmargin}
-
-
-
 \newpage
-{\Large Ejercicio 8\par}
-\vspace{0.5cm}
 
+
+
+\addcontentsline{toc}{section}{Ejercicio 8}
+\section*{Ejercicio 8}
+\vspace{0.5cm}
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{silencios}{\In s : señal, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out intervalos :\TLista{intervalo}}{}
 		\pre{\\
@@ -385,14 +364,13 @@
 	}
 \end{addmargin}
 \vspace{1cm}
-
-
-
-
 \newpage
-{\Large Ejercicio 9\par}
-\vspace{0.5cm}
 
+
+
+\addcontentsline{toc}{section}{Ejercicio 9}
+\section*{Ejercicio 9}
+\vspace{0.5cm}
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{hablantesSuperpuestos}{\In r :reunion, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out result :\bool}{}
 		\pre{\\
@@ -435,14 +413,13 @@
 	}
 \end{addmargin}
 \vspace{1cm}
-
-
-
 \newpage
-{\Large Ejercicio 10\par}
+
+
+
+\addcontentsline{toc}{section}{Ejercicio 10}
+\section*{Ejercicio 10}
 \vspace{1cm}
-
-
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{reconstruir}{\In s: señal, \In frec: \ent, \In prof:\ent, \Out result: señal}{}
 		\pre{esSe\tilde{n}al(s, prof, frec) \y tieneAlMenosDosValoresNoNulos(s)}
