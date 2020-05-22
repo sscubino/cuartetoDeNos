@@ -411,11 +411,11 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{hablantesSuperpuestos}{\In r :reunion, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out result :\bool}{}
 		\pre{\\
-			-2^{prof-1} \leq umbral \leq 2^{prof-1}-1\\
+			-2^{prof-1} \leq umbral \leq 2^{prof-1}-1 \y esReunion(r,prof,freq)\\
 		}
 		\post{ \\
-			result \Iff ((\exists interv:intervalo)(duracionDeIntervalo(interv, freq) > 0.1 \yLuego\\
-			((\exists s_1 : se\tilde{n}al)(\exists s_2 : se\tilde{n}al)(se\tilde{n}alEnReunion(s_1, r) \y (se\tilde{n}alEnReunion(s_2, r)) \yLuego \\
+			result \Iff ((\exists interv:intervalo)(duracionDeIntervalo(interv, freq) > 0.1 \y\\
+			((\exists s_1 : se\tilde{n}al)(\exists s_2 : se\tilde{n}al)(se\tilde{n}alEnReunion(s_1, r) \y (se\tilde{n}alEnReunion(s_2, r)) \y \\
 			(tieneLimitesValidos(interv, s_1) \y tieneLimitesValidos(interv, s_2)) \yLuego\\
 			(esIntervaloRuidoso(interv, s_1, umbral) \y  esIntervaloRuidoso(interv, s_2, umbral))))) \\
 		}
@@ -431,7 +431,7 @@ Usamos los siguientes reemplazos en los tipos de datos:
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{se\tilde{n}alEnReunion}{\In s : se\tilde{n}al,\In r : reunion}{\\
-		(\exists i :\ent)(0 \leq i < |r| \y |s| = |(reunion[i])0|) \yLuego (\forall j :\ent)(0 \leq j < |s| \implicaLuego s[j] = (reunion[i])_0[j]) \\
+		(\exists i :\ent)(0 \leq i < |r| \y |s| = |(r[i])_{0}|) \yLuego (\forall j :\ent)(0 \leq j < |s| \implicaLuego s[j] = (r[i])_0[j]) \\
 	}
 \end{addmargin}
 \vspace{1cm}
@@ -462,23 +462,23 @@ Usamos los siguientes reemplazos en los tipos de datos:
 		\post{ \\
 			|s|=|result| \yLuego (\\
 			(\forall i : \ent)(0\leq i<|s|)\implicaLuego (\\
-			(s[i] = result[i] \y s[i]\neq 0) \vee seReparo(i,s,result)))\\
-		}
+			(s[i] = result[i] \y s[i]\neq 0) \vee seReparo(i,s,result))\\
+			)}
 	\end{proc}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{seReparo}{\In i: \ent, \In s :se\tilde{n}al, \In result :se\tilde{n}al}{\\
-		(\exists a:\ent)(\exists b:\ent)(0 \leq a < b < |s| \yLuego sonLosMasCercanos(a,b,i,s) \yLuego\\
-		result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
+		(\exists a:\ent)(\exists b:\ent)((0 \leq a < |s| \y 0 \leq b < |s| \y a\neq b) \yLuego \\
+		sonLosMasCercanos(a,b,i,s) \y result[i] = \left \lfloor{\frac{a + b}{2}} \right \rfloor)\\
 	}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{sonLosMasCercanos}{\In a: \ent, \In b :\ent, \In i :\ent, \In s: se\tilde{n}al}{\\
-		(\forall k : \ent)((0 \leq k < |s| \yLuego (|k-i|<|a-i| \o |k-i|<|b-i|)) \implica s[k]=0)\\
+		(\forall k : \ent)((0 \leq k < |s| \yLuego (|k-i|<|a-i| \vee |k-i|<|b-i|)) \implica s[k]=0)\\
 	}
 \end{addmargin}
 \vspace{0.5cm}
