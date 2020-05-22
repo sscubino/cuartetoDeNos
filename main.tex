@@ -36,7 +36,17 @@ al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de lo
 		(\exists i:\ent)(0 \leq i < |s| \yLuego s[i]=elem)\\
 	}
 \end{addmargin}
+
+\vspace{0.5cm}
+\subsection*{Tipos de datos}
+Usamos los siguientes reemplazos en los tipos de datos:
+\begin{itemize}
+	\item $se\tilde{n}al=\TLista{\ent}$
+	\item $reunion=\TLista{\tuple{se\tilde{n}al}{\ent}}$
+	\item $intervalo=\tuple{\ent}{\ent}$
+\end{itemize}
 \newpage
+
 
 
 \addcontentsline{toc}{section}{Ejercicio 1}
@@ -323,14 +333,14 @@ al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de lo
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{silencios}{\In s : señal, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out intervalos :\TLista{intervalo}}{}
 		\pre{\\
-			duracion(se\tilde(n)al, freq) > 0 \y\\
+			duracion(se\tilde{n}al, freq) > 0 \y\\
 			respetaProfundidad(se\tilde{n}al, prof) \y\\
 			-2^{prof-1} \leq umbral \leq 2^{prof-1}-1\\
 		}
 		\post{ \\
 			(\forall interv:intervalo)((interv \in intervalos) \Iff (duracionDeIntervalo(interv, freq) > 0.1 \yLuego\\
 			tieneLimitesValidos(interv, s) \yLuego\\
-			esIntervaloSilencioso(interv, se\tilde{n}, ubmral)))\y \\
+			esIntervaloSilencioso(interv, s, ubmral)))\y \\
 			noHayRepetidos(intervalos) \\
 		}
 	\end{proc}
@@ -414,15 +424,14 @@ al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de lo
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLimitesValidos}{\In interv :intervalo,\In s : se\tilde{n}al}{\\
-		0 \leq interv_0 \leq interv_1 < |s| \\
+		0 \leq interv_0 \y interv_0 \leq interv_1 \y interv_1 < |s| \\
 	}
 \end{addmargin}
 \vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{esIntervaloRuidoso}{\In interv :intervalo,\In  s : se\tilde{n}al,\In umbral:\ent}{\\
-		(\forall i :\ent)(interv_1 \leq i \leq interv_2 \implicaLuego (|s[i]| > umbral)) \y \\
-		(interv_0=0 \oLuego |s[interv_0-1]| \leq umbral) \y (interv_1=|s|-1 \oLuego |s[interv_1+1]| \leq umbral)\\
+		(\forall i :\ent)(interv_1 \leq i \leq interv_2 \implicaLuego (|s[i]| > umbral)) \\
 	}
 \end{addmargin}
 \vspace{1cm}
@@ -462,8 +471,8 @@ al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de lo
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneAlMenosDosValoresNoNulos}{\In s: se\tilde{n}al}{\\
-		(\exists a : \ent)(\exists b : \ent)((0 \leq a < |s| \y 0 \leq b < |s| \y a\neq b) \yLuego\\
-		s[a]\neq 0 \y s[b]\neq 0)\\
+		(\exists a : \ent)((\exists b : \ent)((0 \leq a < |s| \y 0 \leq b < |s| \y a\neq b) \yLuego\\
+		s[a]\neq 0 \y s[b]\neq 0))\\
 	}
 \end{addmargin}
 
