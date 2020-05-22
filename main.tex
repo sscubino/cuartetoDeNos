@@ -42,7 +42,8 @@ al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de lo
 Usamos los siguientes reemplazos en los tipos de datos:
 \begin{itemize}
 	\item $se\tilde{n}al=\TLista{\ent}$
-	\item $reunion=\TLista{\tuple{se\tilde{n}al}{\ent}}$
+	\item $hablante=\ent$
+	\item $reunion=\TLista{\tuple{se\tilde{n}al}{hablante}}$
 	\item $intervalo=\tuple{\ent}{\ent}$
 \end{itemize}
 \newpage
@@ -162,7 +163,7 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \begin{addmargin}[4em]{0em}
 	\auxpred{unaSe\tilde{n}alPorPersona}{\In r :reunion}{\\
 		(\forall i :\ent)((\forall j :\ent)((0 \leq i < |r|) \y (0\leq j < |r|) \y (i \neq j) \implicaLuego(\\
-		(r[i])_1 \neq (r[j])_1 \y 0\leq (r[i])_1<|r|)))\\
+		(r[i])_1 \neq (r[j])_1 \y 0\leq (r[i])_1<|r|) \y 0\leq (r[j])_1<|r|)))\\
 	}
 \end{addmargin}
 \newpage
@@ -175,8 +176,10 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{acelerar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r = r_0}
-		\post{result \Iff (tieneLaMitadDeLasMuestras(r,r_0)  \y \\
-			           posicionesImpares(r,r_0)) \\
+		\post{result \Iff |r|=|r_0| \yLuego \\
+					(tieneLaMitadDeLasMuestras(r,r_0)  \y \\
+			        posicionesImpares(r,r_0)) \y \\
+			        mismosHablantes(r_0, r)
 			}
 	\end{proc}
 \end{addmargin}
@@ -184,21 +187,21 @@ Usamos los siguientes reemplazos en los tipos de datos:
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego |(r_0[i])_0| = \frac{|(r[j])_0|}{2} \\
+		(\forall i :\ent)((0 \leq i < |r_0|) \implicaLuego |(r_0[i])_0| = \frac{|(r[i])_0|}{2}) \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{posicionesImpares}{\In r_0 :reunion, \In r :reunion}{\\
-		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |r_0| \y 0 \leq j < |r|) \implicaLuego aux((r_0[i])_0,(r[j])_0) \\
+		(\forall i :\ent)(0 \leq i < |r_0|) \implicaLuego contieneImpares((r_0[i])_0,(r[i])_0) \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
-	\auxpred{aux}{\In l :\TLista{\ent}, \In m :\TLista{\ent}}{\\
-		(\forall i :\ent)(\forall j :\ent)(0 \leq i < |l| \y 0 \leq j < |m| \y \neg esPar(i)) \implicaLuego l[i] = m[j] \\
+	\auxpred{contieneImpares}{\In s_0 :se\tilde{n}al, \In s :se\tilde{n}al}{\\
+		(\forall i :\ent)(1 \leq i < |s_0| \y \neg esPar(i)) \implicaLuego s_0[i] = s[\frac{i-1}{2}] \\
 	}
 \end{addmargin}
 \vspace{0.5cm}
@@ -208,6 +211,14 @@ Usamos los siguientes reemplazos en los tipos de datos:
 		n mod 2 = 0 \\
 	}
 \end{addmargin}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
+	\auxpred{mismosHablantes}{\In r_0 :reunion, \In r :reunion}{\\
+		(\forall i :\ent)(0 \leq i < |r_0|) \implicaLuego r_0[i]_1=r[i]_1 \\
+	}
+\end{addmargin}
+
 \newpage
 
 
@@ -219,9 +230,9 @@ Usamos los siguientes reemplazos en los tipos de datos:
 	\begin{proc}{relentizar}{\Inout r :reunion, \In prof:\ent, \In freq:\ent}{}
 		\pre{r = r_0}
 		\post{result \Iff |r|=|r_0| \yLuego (tieneElDobleDeLasMuestras(r,r_0)  \y \\
-			           lasMuestrasExtrasSonElPromedioDeLosPuntosVecinos(r,r_0)) \y \\
-								 lasMuestrasNoExtrasSonLasOriginales(r,r_0)) \\
-								}
+			    lasMuestrasExtrasSonElPromedioDeLosPuntosVecinos(r,r_0)) \y \\
+				lasMuestrasNoExtrasSonLasOriginales(r,r_0)) \\
+		}
 	\end{proc}
 \end{addmargin}
 \vspace{1cm}
@@ -479,8 +490,3 @@ Usamos los siguientes reemplazos en los tipos de datos:
 
 \end{document}
 
-
-
-
-
-				
