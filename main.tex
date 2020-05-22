@@ -24,6 +24,19 @@
 % End carátula
 
 
+\addcontentsline{toc}{section}{Notas}
+\section*{Notas}
+\vspace{0.5cm}
+\subsection*{Pertenece ($\in$)}
+En algunos ejercicios usamos el reemplazo sintáctico '$elem \in s$' como equivalente
+al siguiente predicado '$pertenece(elem, s)$' para disminuir la verbosidad de los predicados:
+\vspace{0.5cm}
+\begin{addmargin}[4em]{0em}
+	\auxpred{pertenece}{elem :T, s :\TLista{T}}{\\
+		(\exists i:\ent)(0 \leq i < |s| \yLuego s[i]=elem)\\
+	}
+\end{addmargin}
+\newpage
 
 
 \addcontentsline{toc}{section}{Ejercicio 1}
@@ -55,7 +68,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{respetaProfundidad}{s :\TLista{\ent}, prof :\ent}{\\
-		(\forall i :\ent)( 0 \leq i < |s|) \implicaLuego (-2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
+		(\forall i :\ent)(0 \leq i < |s|) \implicaLuego (-2^{prof-1} \leq s[i] \leq 2^{prof-1}-1)\\
 	}
 \end{addmargin}
 \newpage
@@ -345,7 +358,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLimitesValidos}{interv :intervalo, s : se\tilde{n}al}{\\
-		0 \leq interv_0 \leq interv_1 < |s| \\
+		0 \leq interv_0 \y interv_0 \leq interv_1 \y interv_1 < |s| \\
 	}
 \end{addmargin}
 \vspace{1cm}
@@ -360,7 +373,7 @@
 
 \begin{addmargin}[4em]{0em}
 	\auxpred{noHayRepetidos}{interv :\TLista{intervalo}}{\\
-		(\forall i,j :\ent)((i\neq j \y 0\leq i,j <|interv|) \implicaLuego (interv[i]_0 \neq interv[j]_0 \lor interv[i]_1 \neq interv[j]_1)) \\
+		(\forall i :\ent)((\forall j:\ent)((i\neq j \y 0\leq i <|interv| \y 0\leq j <|interv|) \implicaLuego (interv[i]_0 \neq interv[j]_0 \lor interv[i]_1 \neq interv[j]_1))) \\
 	}
 \end{addmargin}
 \vspace{1cm}
