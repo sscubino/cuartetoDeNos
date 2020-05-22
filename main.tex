@@ -185,6 +185,8 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \end{addmargin}
 \vspace{0.5cm}
 
+
+
 \begin{addmargin}[4em]{0em}
 	\auxpred{tieneLaMitadDeLasMuestras}{\In r_0 :reunion, \In r :reunion}{\\
 		(\forall i :\ent)((0 \leq i < |r_0|) \implicaLuego |(r_0[i])_0| = \frac{|(r[i])_0|}{2}) \\
@@ -333,6 +335,12 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \vspace{0.5cm}
 
 \begin{addmargin}[4em]{0em}
+	\aux{tono}{s: señal}{\float}{\sum_{i=0}^{|s|-1} \frac{s[i]}{|s|} }
+
+\end{addmargin}
+\vspace{0.5cm}
+
+\begin{addmargin}[4em]{0em}
     \auxpred{sonLaMismaReunion}{r_{0}:reunion, r: reunion}{\\
 	(\forall s: se\tilde{n}al)(s \in r_{0} \iff s \in r)\\
     }
@@ -347,8 +355,7 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \begin{addmargin}[4em]{0em}
 	\begin{proc}{silencios}{\In s : señal, \In prof:\ent, \In freq:\ent, \In umbral:\ent, \Out intervalos :\TLista{intervalo}}{}
 		\pre{\\
-			duracion(se\tilde{n}al, freq) > 0 \y\\
-			respetaProfundidad(se\tilde{n}al, prof) \y\\
+			esSe\tilde{n}al(s,prof,freq) \y\\
 			-2^{prof-1} \leq umbral \leq 2^{prof-1}-1\\
 		}
 		\post{ \\
@@ -361,18 +368,6 @@ Usamos los siguientes reemplazos en los tipos de datos:
 \end{addmargin}
 \vspace{0.5cm}
 
-\begin{addmargin}[4em]{0em}
-	% Devuelve duracion en segundos
-	\aux{duracion}{s :\TLista{\ent}, freq:\ent}{\float}{(\IfThenElse{freq=0}{0}{\frac{|s|}{1000*freq}})}
-\end{addmargin}
-\vspace{1cm}
-
-\begin{addmargin}[4em]{0em}
-	\auxpred{respetaProfundidad}{s :\TLista{\ent}, prof :\ent}{\\
-		(\forall i :\ent)(0 \leq i < |s| \implicaLuego -2^{prof-1} \leq s[i] \leq 2^{prof-1}-1) \\
-	}
-\end{addmargin}
-\vspace{1cm}
 
 \begin{addmargin}[4em]{0em}
 	% Devuelve duracion en segundos
